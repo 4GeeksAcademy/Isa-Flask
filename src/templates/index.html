@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Medical assurance cost - Model prediction</title>
+    <style>
+        
+        body {
+            font-family: Arial, sans-serif;
+            margin: 150px;
+            background-color: #f4f4f4;
+        
+        }
+        
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+            
+        }
+        
+        input[type="submit"] {
+            background-color: #333;
+            color: #fff;
+            
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+       
+        h3 {
+            margin-top: 20px;
+            background-color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Introduce the values</h2>
+    
+    <form action="/" method="post">
+        Edad: <input type="number" step="any" name="age" required><br><br>
+        ¿Es fumador? yes-no: <input type="text" step="any" name="smoke" required><br><br>
+        ¿Sexo? female-male: <input type="text" step="any" name="sex" required><br><br>
+        ¿Región? northeast-southeast-southwest-northwest:  <input type="text" step="any" name="reg" required><br><br>
+        Peso (kg): <input type="number" step="any" name="kg" required><br><br>
+        Altura (cm): <input type="number" step="any" name="cm" required><br><br>
+        <input type="submit" value="Predict">
+    </form>
+    
+    {% if prediction != None %}
+        <h3>Prediction: {{ prediction }}</h3>
+    {% endif %}
+</body>
+</html>
