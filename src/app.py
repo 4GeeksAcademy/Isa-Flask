@@ -8,7 +8,6 @@ model = load(open("/workspaces/Isa-Flask/models/Reg-Lin_5vars.sav", "rb"))
 
 scaler = joblib.load('/workspaces/Isa-Flask/models/scaler_model.joblib')
 
-scaler = joblib.load('C:\\Users\\isabel\\Desktop\\Isa-Flask\\models\\scaler_model.joblib')
 
 
 @app.route("/", methods = ["GET", "POST"])
