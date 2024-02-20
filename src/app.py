@@ -1,8 +1,12 @@
 from flask import Flask, request, render_template
 from pickle import load
+from sklearn.preprocessing import StandardScaler
+import joblib
 
 app = Flask(__name__)
-model = load(open("C:\\Users\\isabel\\Desktop\\Isa-Flask\\models\\Reg-Lin_5vars.sav", "rb"))
+model = load(open("/workspaces/Isa-Flask/models/Reg-Lin_5vars.sav", "rb"))
+
+scaler = joblib.load('/workspaces/Isa-Flask/models/scaler_model.joblib')
 
 
 @app.route("/", methods = ["GET", "POST"])
@@ -31,9 +35,11 @@ def index():
         bmi=kg/((cm/100)**2)
 
         
-        data = [[smoke_n, age, bmi, sex_n,reg_n]]
+        data_for_norm=[[age, bmi,0, sex_n,smoke_n,reg_n]]
+        data_norm = scaler.transform(data_for_norm)
+        data = [[data_norm[0][4], data_norm[0][0], data_norm[0][1], data_norm[0][3],data_norm[0][5]]]
         
-        prediction = str(round(model.predict(data)[0]/10))
+        prediction = str(round(model.predict(data)[0]))
         pred_price = f"\nEl precio de su seguro será de: {prediction} €"
     else:
         pred_price = None
