@@ -2,9 +2,10 @@ from flask import Flask, request, render_template
 from pickle import load
 from sklearn.preprocessing import StandardScaler
 import joblib
+import os
 
 app = Flask(__name__)
-model = load(open("/Reg-Lin_5vars.sav", "rb"))
+model = load(open("/workspaces/Isa-Flask/src/Reg-Lin_5vars.sav", "rb"))
 
 scaler = joblib.load('/workspaces/Isa-Flask/models/scaler_model.joblib')
 
