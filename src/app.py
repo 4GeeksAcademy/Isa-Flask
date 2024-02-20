@@ -5,6 +5,7 @@ import joblib
 import os
 
 app = Flask(__name__)
+
 model = load(open("/workspaces/Isa-Flask/src/Reg-Lin_5vars.sav", "rb"))
 
 scaler = joblib.load('/workspaces/Isa-Flask/models/scaler_model.joblib')

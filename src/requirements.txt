@@ -19,5 +19,4 @@ app
 gunicorn
 joblib
 load
-pickle
 os
