@@ -16,5 +16,3 @@ xgboost
 waitress
 Flask
 App
-gunicorn
-joblib
